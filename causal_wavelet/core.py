@@ -52,11 +52,25 @@ def time_constants(tau: float, c: float, K: int) -> np.ndarray:
     return np.sqrt(var_k)
 
 
-def scale_space(x: np.ndarray, tau: float, c: float = np.sqrt(2.0), K: int = 8) -> np.ndarray:
-    """Causal temporal scale-space representation L(t; tau, c)."""
+def scale_space(
+    x: np.ndarray, tau: float, c: float = np.sqrt(2.0), K: int = 8, delay_compensate: bool = False
+) -> np.ndarray:
+    """Causal temporal scale-space representation L(t; tau, c).
+
+    The cascade of first-order filters has total group delay D = sum_k mu_k
+    (each stage's impulse response is an exponential with mean mu_k). With
+    delay_compensate=True the output is shifted back by round(D) samples —
+    a bounded lookahead of D samples, acceptable for encoder-side use and
+    for streaming with a fixed small latency budget.
+    """
+    mus = time_constants(tau, c, K)
     y = x.astype(np.float64)
-    for mu in time_constants(tau, c, K):
+    for mu in mus:
         y = first_order_recursive(y, mu)
+    if delay_compensate:
+        d = int(round(mus.sum()))
+        if d > 0:
+            y = np.concatenate([y[d:], y[-1:] * np.ones(d)])
     return y
 
 
