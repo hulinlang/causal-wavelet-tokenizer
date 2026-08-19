@@ -6,9 +6,10 @@ Protocol follows WAT (arXiv:2606.02631) Table 4:
   (vs uniform-stride and random baselines),
 - zero the dropped coefficients, reconstruct, measure PSNR.
 
-Frontends: Haar baseline, causal wavelet (full-length channels), and
-rate-matched causal wavelet (channels decimated to the Haar scalar budget;
-100%-keep PSNR reported as the frontend ceiling).
+Frontends: Haar baseline, causal wavelet (full-length channels),
+rate-matched causal wavelet (channels decimated to the Haar scalar
+budget), and the causal Laplacian pyramid with encoder-side residual
+refinement (route-1). Lossy frontends report 100%-keep PSNR as ceiling.
 
 Signals: synthetic probes for the smoke test (chirp, transient bursts,
 piecewise-smooth). Real datasets (Speech Commands / DAVIS audio track)
@@ -28,6 +29,7 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from frontends.causal import CausalWaveletFrontend
+from frontends.causal_lap import CausalLapPyramidFrontend
 from frontends.haar import HaarFrontend
 
 KEEP_RATIOS = [0.50, 0.25, 0.10, 0.05, 0.01]
@@ -120,6 +122,7 @@ def main():
         HaarFrontend(levels=args.levels),
         CausalWaveletFrontend(levels=args.levels, c=args.c),
         CausalWaveletFrontend(levels=args.levels, c=args.c, rate_matched=True),
+        CausalLapPyramidFrontend(levels=args.levels, c=args.c),
     ]
 
     header = (
