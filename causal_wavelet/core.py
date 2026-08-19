@@ -29,6 +29,11 @@ from __future__ import annotations
 
 import numpy as np
 
+try:
+    from scipy.signal import lfilter as _lfilter
+except ImportError:  # pragma: no cover
+    _lfilter = None
+
 
 def first_order_recursive(x: np.ndarray, mu: float) -> np.ndarray:
     """Apply a single first-order recursive smoothing filter (causal).
@@ -36,6 +41,8 @@ def first_order_recursive(x: np.ndarray, mu: float) -> np.ndarray:
     y[t] = (1 - a) * x[t] + a * y[t-1],  a = exp(-1/mu)
     """
     a = np.exp(-1.0 / mu)
+    if _lfilter is not None:
+        return _lfilter([1.0 - a], [1.0, -a], x.astype(np.float64))
     b = 1.0 - a
     y = np.empty_like(x, dtype=np.float64)
     prev = 0.0
