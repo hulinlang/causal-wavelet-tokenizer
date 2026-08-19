@@ -19,14 +19,18 @@ import torch.nn as nn
 
 class TokenTrunkAE(nn.Module):
     def __init__(self, channels: int = 2, width: int = 32, latent: int = 16, hidden: int = 64,
-                 value_scale: float = 1.0):
+                 value_scale: float = 1.0, dec_ln: bool = True):
         super().__init__()
         self.value_scale = value_scale
         self.a_in = nn.Linear(channels, width)
         self.enc = nn.Sequential(nn.LayerNorm(width), nn.Linear(width, hidden), nn.GELU(),
                                  nn.Linear(hidden, latent))
-        self.dec = nn.Sequential(nn.LayerNorm(latent), nn.Linear(latent, hidden), nn.GELU(),
-                                 nn.Linear(hidden, width))
+        # NOTE: LayerNorm(latent) destroys magnitude information at tiny latent
+        # dims (d=1 -> constant zero output; d=2 -> only the sign pattern
+        # survives). dec_ln=False removes it for low-rate controls (exp 0.4).
+        dec_layers = [nn.LayerNorm(latent)] if dec_ln else []
+        dec_layers += [nn.Linear(latent, hidden), nn.GELU(), nn.Linear(hidden, width)]
+        self.dec = nn.Sequential(*dec_layers)
         self.a_out = nn.Linear(width, channels)
 
     def forward(self, tokens: torch.Tensor) -> torch.Tensor:
