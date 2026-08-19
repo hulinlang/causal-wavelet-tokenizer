@@ -1,0 +1,427 @@
+{
+  "runs": [
+    {
+      "frontend": "haar",
+      "latent": 1,
+      "seed": 0,
+      "val_psnr_mean": 46.046,
+      "val_psnr_std": 5.88,
+      "curve": {
+        "750": {
+          "mean": 46.948,
+          "std": 6.738
+        },
+        "1500": {
+          "mean": 46.944,
+          "std": 6.717
+        },
+        "3000": {
+          "mean": 46.046,
+          "std": 5.88
+        }
+      },
+      "train_seconds": 43.1
+    },
+    {
+      "frontend": "haar",
+      "latent": 1,
+      "seed": 1,
+      "val_psnr_mean": 46.902,
+      "val_psnr_std": 6.643,
+      "curve": {
+        "750": {
+          "mean": 46.929,
+          "std": 6.754
+        },
+        "1500": {
+          "mean": 46.443,
+          "std": 6.338
+        },
+        "3000": {
+          "mean": 46.902,
+          "std": 6.643
+        }
+      },
+      "train_seconds": 41.1
+    },
+    {
+      "frontend": "haar",
+      "latent": 1,
+      "seed": 2,
+      "val_psnr_mean": 46.702,
+      "val_psnr_std": 6.387,
+      "curve": {
+        "750": {
+          "mean": 46.538,
+          "std": 6.512
+        },
+        "1500": {
+          "mean": 44.192,
+          "std": 4.146
+        },
+        "3000": {
+          "mean": 46.702,
+          "std": 6.387
+        }
+      },
+      "train_seconds": 39.1
+    },
+    {
+      "frontend": "haar",
+      "latent": 2,
+      "seed": 0,
+      "val_psnr_mean": 55.142,
+      "val_psnr_std": 1.469,
+      "curve": {
+        "750": {
+          "mean": 65.015,
+          "std": 7.56
+        },
+        "1500": {
+          "mean": 65.825,
+          "std": 3.614
+        },
+        "3000": {
+          "mean": 55.142,
+          "std": 1.469
+        }
+      },
+      "train_seconds": 10.5
+    },
+    {
+      "frontend": "haar",
+      "latent": 2,
+      "seed": 1,
+      "val_psnr_mean": 74.818,
+      "val_psnr_std": 3.765,
+      "curve": {
+        "750": {
+          "mean": 61.745,
+          "std": 6.605
+        },
+        "1500": {
+          "mean": 59.864,
+          "std": 4.037
+        },
+        "3000": {
+          "mean": 74.818,
+          "std": 3.765
+        }
+      },
+      "train_seconds": 10.6
+    },
+    {
+      "frontend": "haar",
+      "latent": 2,
+      "seed": 2,
+      "val_psnr_mean": 69.006,
+      "val_psnr_std": 3.052,
+      "curve": {
+        "750": {
+          "mean": 52.67,
+          "std": 3.907
+        },
+        "1500": {
+          "mean": 52.095,
+          "std": 1.573
+        },
+        "3000": {
+          "mean": 69.006,
+          "std": 3.052
+        }
+      },
+      "train_seconds": 10.3
+    },
+    {
+      "frontend": "haar",
+      "latent": 4,
+      "seed": 0,
+      "val_psnr_mean": 58.416,
+      "val_psnr_std": 4.583,
+      "curve": {
+        "750": {
+          "mean": 60.535,
+          "std": 4.509
+        },
+        "1500": {
+          "mean": 61.821,
+          "std": 2.208
+        },
+        "3000": {
+          "mean": 58.416,
+          "std": 4.583
+        }
+      },
+      "train_seconds": 10.7
+    },
+    {
+      "frontend": "haar",
+      "latent": 4,
+      "seed": 1,
+      "val_psnr_mean": 75.565,
+      "val_psnr_std": 4.779,
+      "curve": {
+        "750": {
+          "mean": 62.326,
+          "std": 6.514
+        },
+        "1500": {
+          "mean": 52.859,
+          "std": 0.573
+        },
+        "3000": {
+          "mean": 75.565,
+          "std": 4.779
+        }
+      },
+      "train_seconds": 11.1
+    },
+    {
+      "frontend": "haar",
+      "latent": 4,
+      "seed": 2,
+      "val_psnr_mean": 69.139,
+      "val_psnr_std": 3.342,
+      "curve": {
+        "750": {
+          "mean": 55.418,
+          "std": 3.783
+        },
+        "1500": {
+          "mean": 55.193,
+          "std": 1.287
+        },
+        "3000": {
+          "mean": 69.139,
+          "std": 3.342
+        }
+      },
+      "train_seconds": 10.4
+    },
+    {
+      "frontend": "causal_lap",
+      "latent": 1,
+      "seed": 0,
+      "val_psnr_mean": 47.228,
+      "val_psnr_std": 4.545,
+      "curve": {
+        "750": {
+          "mean": 49.641,
+          "std": 6.943
+        },
+        "1500": {
+          "mean": 48.708,
+          "std": 5.687
+        },
+        "3000": {
+          "mean": 47.228,
+          "std": 4.545
+        }
+      },
+      "train_seconds": 21.5
+    },
+    {
+      "frontend": "causal_lap",
+      "latent": 1,
+      "seed": 1,
+      "val_psnr_mean": 51.213,
+      "val_psnr_std": 7.688,
+      "curve": {
+        "750": {
+          "mean": 48.978,
+          "std": 5.667
+        },
+        "1500": {
+          "mean": 49.379,
+          "std": 7.383
+        },
+        "3000": {
+          "mean": 51.213,
+          "std": 7.688
+        }
+      },
+      "train_seconds": 20.8
+    },
+    {
+      "frontend": "causal_lap",
+      "latent": 1,
+      "seed": 2,
+      "val_psnr_mean": 50.47,
+      "val_psnr_std": 7.319,
+      "curve": {
+        "750": {
+          "mean": 44.781,
+          "std": 3.66
+        },
+        "1500": {
+          "mean": 47.544,
+          "std": 5.513
+        },
+        "3000": {
+          "mean": 50.47,
+          "std": 7.319
+        }
+      },
+      "train_seconds": 21.8
+    },
+    {
+      "frontend": "causal_lap",
+      "latent": 2,
+      "seed": 0,
+      "val_psnr_mean": 46.069,
+      "val_psnr_std": 3.906,
+      "curve": {
+        "750": {
+          "mean": 50.021,
+          "std": 7.123
+        },
+        "1500": {
+          "mean": 50.61,
+          "std": 7.527
+        },
+        "3000": {
+          "mean": 46.069,
+          "std": 3.906
+        }
+      },
+      "train_seconds": 20.7
+    },
+    {
+      "frontend": "causal_lap",
+      "latent": 2,
+      "seed": 1,
+      "val_psnr_mean": 51.306,
+      "val_psnr_std": 7.828,
+      "curve": {
+        "750": {
+          "mean": 51.31,
+          "std": 8.007
+        },
+        "1500": {
+          "mean": 48.849,
+          "std": 6.837
+        },
+        "3000": {
+          "mean": 51.306,
+          "std": 7.828
+        }
+      },
+      "train_seconds": 21.2
+    },
+    {
+      "frontend": "causal_lap",
+      "latent": 2,
+      "seed": 2,
+      "val_psnr_mean": 50.595,
+      "val_psnr_std": 7.401,
+      "curve": {
+        "750": {
+          "mean": 48.972,
+          "std": 6.733
+        },
+        "1500": {
+          "mean": 48.102,
+          "std": 6.625
+        },
+        "3000": {
+          "mean": 50.595,
+          "std": 7.401
+        }
+      },
+      "train_seconds": 21.4
+    },
+    {
+      "frontend": "causal_lap",
+      "latent": 4,
+      "seed": 0,
+      "val_psnr_mean": 47.989,
+      "val_psnr_std": 4.988,
+      "curve": {
+        "750": {
+          "mean": 48.629,
+          "std": 6.514
+        },
+        "1500": {
+          "mean": 50.145,
+          "std": 6.985
+        },
+        "3000": {
+          "mean": 47.989,
+          "std": 4.988
+        }
+      },
+      "train_seconds": 20.4
+    },
+    {
+      "frontend": "causal_lap",
+      "latent": 4,
+      "seed": 1,
+      "val_psnr_mean": 51.248,
+      "val_psnr_std": 7.759,
+      "curve": {
+        "750": {
+          "mean": 51.048,
+          "std": 7.579
+        },
+        "1500": {
+          "mean": 49.15,
+          "std": 7.359
+        },
+        "3000": {
+          "mean": 51.248,
+          "std": 7.759
+        }
+      },
+      "train_seconds": 21.6
+    },
+    {
+      "frontend": "causal_lap",
+      "latent": 4,
+      "seed": 2,
+      "val_psnr_mean": 50.734,
+      "val_psnr_std": 7.589,
+      "curve": {
+        "750": {
+          "mean": 49.326,
+          "std": 7.149
+        },
+        "1500": {
+          "mean": 47.68,
+          "std": 5.257
+        },
+        "3000": {
+          "mean": 50.734,
+          "std": 7.589
+        }
+      },
+      "train_seconds": 21.0
+    }
+  ],
+  "config": {
+    "latents": [
+      1,
+      2,
+      4
+    ],
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "steps": 3000,
+    "eval_steps": [
+      750,
+      1500,
+      3000
+    ],
+    "batch": 2,
+    "n": 16384,
+    "width": 32,
+    "hidden": 64,
+    "lr": 0.001,
+    "val_clips": 64,
+    "val_seed": 10000,
+    "data_range": 2.0,
+    "device": "cuda"
+  }
+}

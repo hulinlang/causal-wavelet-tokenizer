@@ -1,0 +1,572 @@
+{
+  "runs": [
+    {
+      "frontend": "haar",
+      "latent": 1,
+      "seed": 0,
+      "val_psnr_mean": 30.567,
+      "val_psnr_std": 6.205,
+      "curve": {
+        "150": {
+          "mean": 30.566,
+          "std": 6.203
+        },
+        "300": {
+          "mean": 30.567,
+          "std": 6.205
+        }
+      },
+      "train_seconds": 1.3
+    },
+    {
+      "frontend": "haar",
+      "latent": 1,
+      "seed": 1,
+      "val_psnr_mean": 30.555,
+      "val_psnr_std": 6.188,
+      "curve": {
+        "150": {
+          "mean": 30.568,
+          "std": 6.206
+        },
+        "300": {
+          "mean": 30.555,
+          "std": 6.188
+        }
+      },
+      "train_seconds": 1.1
+    },
+    {
+      "frontend": "haar",
+      "latent": 1,
+      "seed": 2,
+      "val_psnr_mean": 30.429,
+      "val_psnr_std": 6.018,
+      "curve": {
+        "150": {
+          "mean": 30.475,
+          "std": 6.08
+        },
+        "300": {
+          "mean": 30.429,
+          "std": 6.018
+        }
+      },
+      "train_seconds": 1.1
+    },
+    {
+      "frontend": "haar",
+      "latent": 2,
+      "seed": 0,
+      "val_psnr_mean": 31.881,
+      "val_psnr_std": 5.105,
+      "curve": {
+        "150": {
+          "mean": 31.914,
+          "std": 5.212
+        },
+        "300": {
+          "mean": 31.881,
+          "std": 5.105
+        }
+      },
+      "train_seconds": 1.1
+    },
+    {
+      "frontend": "haar",
+      "latent": 2,
+      "seed": 1,
+      "val_psnr_mean": 30.566,
+      "val_psnr_std": 6.203,
+      "curve": {
+        "150": {
+          "mean": 30.567,
+          "std": 6.205
+        },
+        "300": {
+          "mean": 30.566,
+          "std": 6.203
+        }
+      },
+      "train_seconds": 1.2
+    },
+    {
+      "frontend": "haar",
+      "latent": 2,
+      "seed": 2,
+      "val_psnr_mean": 30.515,
+      "val_psnr_std": 6.133,
+      "curve": {
+        "150": {
+          "mean": 30.497,
+          "std": 6.109
+        },
+        "300": {
+          "mean": 30.515,
+          "std": 6.133
+        }
+      },
+      "train_seconds": 1.2
+    },
+    {
+      "frontend": "haar",
+      "latent": 4,
+      "seed": 0,
+      "val_psnr_mean": 55.94,
+      "val_psnr_std": 4.305,
+      "curve": {
+        "150": {
+          "mean": 52.006,
+          "std": 5.231
+        },
+        "300": {
+          "mean": 55.94,
+          "std": 4.305
+        }
+      },
+      "train_seconds": 1.1
+    },
+    {
+      "frontend": "haar",
+      "latent": 4,
+      "seed": 1,
+      "val_psnr_mean": 56.512,
+      "val_psnr_std": 4.89,
+      "curve": {
+        "150": {
+          "mean": 47.495,
+          "std": 6.49
+        },
+        "300": {
+          "mean": 56.512,
+          "std": 4.89
+        }
+      },
+      "train_seconds": 1.1
+    },
+    {
+      "frontend": "haar",
+      "latent": 4,
+      "seed": 2,
+      "val_psnr_mean": 52.817,
+      "val_psnr_std": 4.322,
+      "curve": {
+        "150": {
+          "mean": 40.997,
+          "std": 5.156
+        },
+        "300": {
+          "mean": 52.817,
+          "std": 4.322
+        }
+      },
+      "train_seconds": 1.1
+    },
+    {
+      "frontend": "haar",
+      "latent": 8,
+      "seed": 0,
+      "val_psnr_mean": 56.713,
+      "val_psnr_std": 4.19,
+      "curve": {
+        "150": {
+          "mean": 49.74,
+          "std": 3.496
+        },
+        "300": {
+          "mean": 56.713,
+          "std": 4.19
+        }
+      },
+      "train_seconds": 1.1
+    },
+    {
+      "frontend": "haar",
+      "latent": 8,
+      "seed": 1,
+      "val_psnr_mean": 50.75,
+      "val_psnr_std": 5.772,
+      "curve": {
+        "150": {
+          "mean": 46.908,
+          "std": 6.834
+        },
+        "300": {
+          "mean": 50.75,
+          "std": 5.772
+        }
+      },
+      "train_seconds": 1.1
+    },
+    {
+      "frontend": "haar",
+      "latent": 8,
+      "seed": 2,
+      "val_psnr_mean": 47.139,
+      "val_psnr_std": 6.336,
+      "curve": {
+        "150": {
+          "mean": 40.169,
+          "std": 5.005
+        },
+        "300": {
+          "mean": 47.139,
+          "std": 6.336
+        }
+      },
+      "train_seconds": 1.1
+    },
+    {
+      "frontend": "haar",
+      "latent": 16,
+      "seed": 0,
+      "val_psnr_mean": 50.667,
+      "val_psnr_std": 2.086,
+      "curve": {
+        "150": {
+          "mean": 48.003,
+          "std": 4.753
+        },
+        "300": {
+          "mean": 50.667,
+          "std": 2.086
+        }
+      },
+      "train_seconds": 1.0
+    },
+    {
+      "frontend": "haar",
+      "latent": 16,
+      "seed": 1,
+      "val_psnr_mean": 52.515,
+      "val_psnr_std": 6.478,
+      "curve": {
+        "150": {
+          "mean": 47.156,
+          "std": 6.987
+        },
+        "300": {
+          "mean": 52.515,
+          "std": 6.478
+        }
+      },
+      "train_seconds": 1.0
+    },
+    {
+      "frontend": "haar",
+      "latent": 16,
+      "seed": 2,
+      "val_psnr_mean": 53.126,
+      "val_psnr_std": 6.446,
+      "curve": {
+        "150": {
+          "mean": 41.294,
+          "std": 4.57
+        },
+        "300": {
+          "mean": 53.126,
+          "std": 6.446
+        }
+      },
+      "train_seconds": 1.0
+    },
+    {
+      "frontend": "causal_lap",
+      "latent": 1,
+      "seed": 0,
+      "val_psnr_mean": 30.565,
+      "val_psnr_std": 6.202,
+      "curve": {
+        "150": {
+          "mean": 30.561,
+          "std": 6.196
+        },
+        "300": {
+          "mean": 30.565,
+          "std": 6.202
+        }
+      },
+      "train_seconds": 2.4
+    },
+    {
+      "frontend": "causal_lap",
+      "latent": 1,
+      "seed": 1,
+      "val_psnr_mean": 30.543,
+      "val_psnr_std": 6.171,
+      "curve": {
+        "150": {
+          "mean": 30.565,
+          "std": 6.202
+        },
+        "300": {
+          "mean": 30.543,
+          "std": 6.171
+        }
+      },
+      "train_seconds": 2.0
+    },
+    {
+      "frontend": "causal_lap",
+      "latent": 1,
+      "seed": 2,
+      "val_psnr_mean": 30.464,
+      "val_psnr_std": 6.064,
+      "curve": {
+        "150": {
+          "mean": 29.985,
+          "std": 5.475
+        },
+        "300": {
+          "mean": 30.464,
+          "std": 6.064
+        }
+      },
+      "train_seconds": 2.2
+    },
+    {
+      "frontend": "causal_lap",
+      "latent": 2,
+      "seed": 0,
+      "val_psnr_mean": 30.566,
+      "val_psnr_std": 6.204,
+      "curve": {
+        "150": {
+          "mean": 30.567,
+          "std": 6.205
+        },
+        "300": {
+          "mean": 30.566,
+          "std": 6.204
+        }
+      },
+      "train_seconds": 2.2
+    },
+    {
+      "frontend": "causal_lap",
+      "latent": 2,
+      "seed": 1,
+      "val_psnr_mean": 31.992,
+      "val_psnr_std": 5.079,
+      "curve": {
+        "150": {
+          "mean": 32.292,
+          "std": 5.685
+        },
+        "300": {
+          "mean": 31.992,
+          "std": 5.079
+        }
+      },
+      "train_seconds": 2.1
+    },
+    {
+      "frontend": "causal_lap",
+      "latent": 2,
+      "seed": 2,
+      "val_psnr_mean": 30.466,
+      "val_psnr_std": 6.068,
+      "curve": {
+        "150": {
+          "mean": 30.555,
+          "std": 6.189
+        },
+        "300": {
+          "mean": 30.466,
+          "std": 6.068
+        }
+      },
+      "train_seconds": 2.2
+    },
+    {
+      "frontend": "causal_lap",
+      "latent": 4,
+      "seed": 0,
+      "val_psnr_mean": 48.955,
+      "val_psnr_std": 6.801,
+      "curve": {
+        "150": {
+          "mean": 43.624,
+          "std": 5.722
+        },
+        "300": {
+          "mean": 48.955,
+          "std": 6.801
+        }
+      },
+      "train_seconds": 2.1
+    },
+    {
+      "frontend": "causal_lap",
+      "latent": 4,
+      "seed": 1,
+      "val_psnr_mean": 48.333,
+      "val_psnr_std": 6.148,
+      "curve": {
+        "150": {
+          "mean": 47.128,
+          "std": 7.64
+        },
+        "300": {
+          "mean": 48.333,
+          "std": 6.148
+        }
+      },
+      "train_seconds": 2.1
+    },
+    {
+      "frontend": "causal_lap",
+      "latent": 4,
+      "seed": 2,
+      "val_psnr_mean": 48.589,
+      "val_psnr_std": 5.609,
+      "curve": {
+        "150": {
+          "mean": 41.097,
+          "std": 4.601
+        },
+        "300": {
+          "mean": 48.589,
+          "std": 5.609
+        }
+      },
+      "train_seconds": 2.1
+    },
+    {
+      "frontend": "causal_lap",
+      "latent": 8,
+      "seed": 0,
+      "val_psnr_mean": 50.236,
+      "val_psnr_std": 7.575,
+      "curve": {
+        "150": {
+          "mean": 42.998,
+          "std": 4.531
+        },
+        "300": {
+          "mean": 50.236,
+          "std": 7.575
+        }
+      },
+      "train_seconds": 2.1
+    },
+    {
+      "frontend": "causal_lap",
+      "latent": 8,
+      "seed": 1,
+      "val_psnr_mean": 49.022,
+      "val_psnr_std": 6.389,
+      "curve": {
+        "150": {
+          "mean": 47.905,
+          "std": 7.563
+        },
+        "300": {
+          "mean": 49.022,
+          "std": 6.389
+        }
+      },
+      "train_seconds": 2.1
+    },
+    {
+      "frontend": "causal_lap",
+      "latent": 8,
+      "seed": 2,
+      "val_psnr_mean": 47.548,
+      "val_psnr_std": 6.426,
+      "curve": {
+        "150": {
+          "mean": 42.096,
+          "std": 5.32
+        },
+        "300": {
+          "mean": 47.548,
+          "std": 6.426
+        }
+      },
+      "train_seconds": 2.1
+    },
+    {
+      "frontend": "causal_lap",
+      "latent": 16,
+      "seed": 0,
+      "val_psnr_mean": 48.133,
+      "val_psnr_std": 6.379,
+      "curve": {
+        "150": {
+          "mean": 43.757,
+          "std": 5.433
+        },
+        "300": {
+          "mean": 48.133,
+          "std": 6.379
+        }
+      },
+      "train_seconds": 2.0
+    },
+    {
+      "frontend": "causal_lap",
+      "latent": 16,
+      "seed": 1,
+      "val_psnr_mean": 47.904,
+      "val_psnr_std": 7.082,
+      "curve": {
+        "150": {
+          "mean": 44.094,
+          "std": 7.056
+        },
+        "300": {
+          "mean": 47.904,
+          "std": 7.082
+        }
+      },
+      "train_seconds": 2.0
+    },
+    {
+      "frontend": "causal_lap",
+      "latent": 16,
+      "seed": 2,
+      "val_psnr_mean": 48.05,
+      "val_psnr_std": 5.869,
+      "curve": {
+        "150": {
+          "mean": 42.482,
+          "std": 5.009
+        },
+        "300": {
+          "mean": 48.05,
+          "std": 5.869
+        }
+      },
+      "train_seconds": 2.0
+    }
+  ],
+  "config": {
+    "latents": [
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "steps": 300,
+    "eval_steps": [
+      150,
+      300
+    ],
+    "batch": 2,
+    "n": 16384,
+    "width": 32,
+    "hidden": 64,
+    "lr": 0.001,
+    "val_clips": 64,
+    "val_seed": 10000,
+    "data_range": 2.0,
+    "device": "cuda"
+  }
+}
