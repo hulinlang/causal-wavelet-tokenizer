@@ -13,12 +13,12 @@ Token layout (one-level, identical across frontends):
   Haar L=1       -> channels [cA (n/2), cD (n/2)]  -> tokens (N=n/2, C=2)
   causal_lap L=1 -> channels [base (n/2), r0 (n/2)] -> tokens (N=n/2, C=2)
 
-Data: synthetic audio-like probes until Speech Commands is downloaded
-(--data points at the dataset root later).
+Data: Speech Commands v0.02 via --data (105,829 wavs), or synthetic
+audio-like probes when --data is omitted.
 
 Run (GPU):
-  python experiments/stage1_shared_trunk.py --frontend haar
-  python experiments/stage1_shared_trunk.py --frontend causal_lap
+  python experiments/stage1_shared_trunk.py --frontend haar --data <dataset_root>
+  python experiments/stage1_shared_trunk.py --frontend causal_lap --data <dataset_root>
 """
 
 from __future__ import annotations
@@ -41,6 +41,33 @@ DATA_RANGE = 2.0  # audio normalized to [-1, 1]
 
 
 # ------------------------------------------------------------------- data
+
+def list_speech_commands(root: str) -> list[str]:
+    """All .wav files under category folders (skip _background_noise_)."""
+    files = []
+    for p in sorted(Path(root).iterdir()):
+        if p.is_dir() and not p.name.startswith("_"):
+            files.extend(str(f) for f in p.glob("*.wav"))
+    return files
+
+
+def load_wav(path: str, n: int) -> np.ndarray:
+    """Read mono wav, normalize int16/32768, pad/truncate to n samples."""
+    from scipy.io import wavfile
+
+    sr, x = wavfile.read(path)
+    if x.ndim > 1:
+        x = x.mean(axis=1)
+    x = x.astype(np.float64) / 32768.0
+    if x.shape[0] < n:
+        x = np.pad(x, (0, n - x.shape[0]))
+    return x[:n]
+
+
+def real_batch(files: list[str], batch: int, n: int, rng: np.random.Generator) -> np.ndarray:
+    picks = rng.choice(len(files), size=batch, replace=False)
+    return np.stack([load_wav(files[i], n) for i in picks])
+
 
 def synth_batch(batch: int, n: int, rng: np.random.Generator) -> np.ndarray:
     """Random audio-like probes: mixture of chirps, bursts, smooth segments."""
@@ -121,18 +148,25 @@ def main():
     ap.add_argument("--lr", type=float, default=1e-3)
     ap.add_argument("--value-scale", type=float, default=1.0)
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--data", default=None, help="Speech Commands root; omit for synthetic probes")
     ap.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     args = ap.parse_args()
 
     torch.manual_seed(args.seed)
     rng = np.random.default_rng(args.seed)
+    files = list_speech_commands(args.data) if args.data else None
+    if files:
+        print(f"real data: {len(files)} wav files from {args.data}")
+
+    def get_batch(batch, n, r):
+        return real_batch(files, batch, n, r) if files else synth_batch(batch, n, r)
     fe = make_frontend(args.frontend)
     model = TokenTrunkAE(2, args.width, args.latent, args.hidden, args.value_scale).to(args.device)
     opt = torch.optim.AdamW(model.parameters(), lr=args.lr)
 
     t0 = time.time()
     for step in range(1, args.steps + 1):
-        xb = torch.from_numpy(synth_batch(args.batch, args.n, rng)).float().to(args.device)
+        xb = torch.from_numpy(get_batch(args.batch, args.n, rng)).float().to(args.device)
         tok = torch.from_numpy(
             np.stack([to_tokens(fe, x) for x in xb.cpu().numpy().astype(np.float64)])
         ).float().to(args.device)
@@ -146,7 +180,7 @@ def main():
         if step % 50 == 0 or step == 1:
             model.eval()
             with torch.no_grad():
-                xv = synth_batch(4, args.n, np.random.default_rng(10_000))
+                xv = get_batch(4, args.n, np.random.default_rng(10_000))
                 tokv = torch.from_numpy(np.stack([to_tokens(fe, x) for x in xv])).float().to(args.device)
                 xhv = inverse_torch(args.frontend, model(tokv), args.n).cpu().numpy()
                 psnrs = [psnr(x, xh) for x, xh in zip(xv, xhv)]
