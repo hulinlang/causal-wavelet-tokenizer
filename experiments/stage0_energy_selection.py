@@ -6,6 +6,10 @@ Protocol follows WAT (arXiv:2606.02631) Table 4:
   (vs uniform-stride and random baselines),
 - zero the dropped coefficients, reconstruct, measure PSNR.
 
+Frontends: Haar baseline, causal wavelet (full-length channels), and
+rate-matched causal wavelet (channels decimated to the Haar scalar budget;
+100%-keep PSNR reported as the frontend ceiling).
+
 Signals: synthetic probes for the smoke test (chirp, transient bursts,
 piecewise-smooth). Real datasets (Speech Commands / DAVIS audio track)
 plug in via --data once downloaded.
@@ -91,17 +95,18 @@ def psnr(x: np.ndarray, y: np.ndarray) -> float:
 
 # ------------------------------------------------------------------ main
 
-def run(frontend, x: np.ndarray, rng: np.random.Generator) -> dict[str, dict[float, float]]:
+def run(frontend, x: np.ndarray, rng: np.random.Generator) -> dict:
     channels = frontend.forward(x)
-    x_hat = frontend.inverse(channels)
-    assert psnr(x, x_hat) > 120, f"{frontend.name}: round-trip not exact ({psnr(x, x_hat):.1f} dB)"
+    ceiling = psnr(x, frontend.inverse(channels))
+    if not getattr(frontend, "rate_matched", False):
+        assert ceiling > 120, f"{frontend.name}: round-trip not exact ({ceiling:.1f} dB)"
 
     out: dict[str, dict[float, float]] = {}
     for method in ("energy_global", "uniform", "random"):
         out[method] = {
             r: psnr(x, frontend.inverse(select(channels, r, method, rng))) for r in KEEP_RATIOS
         }
-    return out
+    return {"ceiling": ceiling, "selectors": out}
 
 
 def main():
@@ -114,17 +119,25 @@ def main():
     frontends = [
         HaarFrontend(levels=args.levels),
         CausalWaveletFrontend(levels=args.levels, c=args.c),
+        CausalWaveletFrontend(levels=args.levels, c=args.c, rate_matched=True),
     ]
 
-    header = f"{'signal':<10}{'frontend':<16}{'selector':<15}" + "".join(f"{r:>8.0%}" for r in KEEP_RATIOS)
+    header = (
+        f"{'signal':<10}{'frontend':<20}{'selector':<15}{'100%':>8}"
+        + "".join(f"{r:>8.0%}" for r in KEEP_RATIOS)
+    )
     print(header)
     print("-" * len(header))
     for sname, x in probe_signals().items():
         for fe in frontends:
             rows = [run(fe, x, np.random.default_rng(s)) for s in range(args.seeds)]
+            ceiling = np.mean([row["ceiling"] for row in rows])
             for method in ("energy_global", "uniform", "random"):
-                vals = [np.mean([row[method][r] for row in rows]) for r in KEEP_RATIOS]
-                print(f"{sname:<10}{fe.name:<16}{method:<15}" + "".join(f"{v:>8.2f}" for v in vals))
+                vals = [np.mean([row["selectors"][method][r] for row in rows]) for r in KEEP_RATIOS]
+                print(
+                    f"{sname:<10}{fe.name:<20}{method:<15}{ceiling:>8.2f}"
+                    + "".join(f"{v:>8.2f}" for v in vals)
+                )
 
 
 if __name__ == "__main__":
